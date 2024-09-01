@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>linux-like</title>
+    <meta name="description" content="description tbd">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+    <h1>Linux-like cmd</h1>
+    <ul>
+        <li>ref
+            <ul>
+                <li><a href="https:www.linfo.org">linfo.org</a></li>
+                <li>linux-commands-cheat-sheet
+                    <ul>
+                        <li><a href="https://files.fosswire.com/2007/08/fwunixref.pdf">fwunixref.pdf</a></li>
+                        <li><a href="https://www.linuxtrainingacademy.com/linux-commands-cheat-sheet/">LinuxCommandLineCheatSheet.pdf</a></li>
+                        <li><a href="https://oit.ua.edu/wp-content/uploads/2020/12/Linux_bash_cheat_sheet-1.pdf">bash_cheat_sheet.pdf</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>grep
+            <ul>
+                <li>grep -rni pat # r for recursive, n for line Number, i for case Insensitive</li>
+                <li>grep -A 3 pat # -A 3 to show extra 3 lines Above, also -B 3 for Below, and -C 3 for Context, i.e. 3
+                    lines Below and Above</li>
+                <li>grep -v pat # v for reVerse, i.e. all lines except the matching lines</li>
+            </ul>
+        </li>
+        <li>find
+            <ul>
+                <li>find . -type f -name '*.py' -exec grep -I --exclude='tmp*.py' "pattern" {} + # exec grep "pattern"
+                    on each file with its name matching '*.py',
+                    <ul>
+                        <li>-I: Ignore binary files</li>
+                        <li>--exclude='tmp*.py': exclude temp files with names like tmp1.py, tmp2.py</li>
+                        <li>{}: brace expansion. More examples of brace/bracket expansion: echo b{ar,olt,ed}s see book
+                            "learning the bash shell"</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>diff
+            <ul>
+                <li>diff -u file1.txt file2.txt # u: Unified -> more concise</li>
+                <li>diff -c file1.txt file2.txt # c: Context</li>
+                <li>diff --side-by-side file1.txt file2.txt # diff output will be shown side by side</li>
+                <li>diff --ignore-white-space file1.txt file2.txt # white space diff will be ignored</li>
+                <li>diff --strip-trailing-cr file1.txt file2.txt # ignore carriage return characters (\r), which are
+                    common in files created on Windows (with CRLF line endings).</li>
+            </ul>
+        </li>
+    </ul>
+</body>
+
+</html>

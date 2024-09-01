@@ -1,0 +1,53 @@
+import React, { useState } from 'react';
+
+const CollapsibleList = ({ items }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggle = () => {
+    setIsOpen(!isOpen);
+  };
+
+  return (
+    <ul>
+      {items.map((item, index) => (
+        <li key={index}>
+          {item.name && (
+            <span onClick={toggle} style={{ cursor: 'pointer' }}>
+              {item.name}
+            </span>
+          )}
+          {isOpen && item.children && <CollapsibleList items={item.children} />}
+        </li>
+      ))}
+    </ul>
+  );
+};
+
+const App = () => {
+  const data = [
+    {
+      name: 'Tech',
+      children: [
+        {
+          name: 'CS',
+          children: [
+            { name: 'Programming' },
+            { name: 'Data Structures' },
+          ],
+        },
+        { name: 'Software Engineering' },
+      ],
+    },
+    {
+      name: 'Non-Tech',
+      children: [
+        { name: 'Health' },
+        { name: 'Emotional Intelligence' },
+      ],
+    },
+  ];
+
+  return <CollapsibleList items={data} />;
+};
+
+export default App;
