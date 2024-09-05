@@ -36,8 +36,13 @@
         <li>git log --oneline</li>
         <li>git status</li>
         <li>git diff</li>
-        <li>git add -u .<br>
-            -u for update. It will ignore untracked files.</li>
+        <li>git add .
+            <ul>
+                <li>-u for update. It will ignore untracked files.</li>
+                <li>-A for All. It will include untracked files.</li>
+                <li>git -A and git -u can be used without a file or dir argument (default to the whole working dir of the curr git project).</li>
+            </ul>
+        </li>
         <li>git commit --amend --no-edit</li>
         <li>git show</li>
         <li>After making the commit, you can see which files were included in the commit by running:<br>
