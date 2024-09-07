@@ -1,20 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WiFi</title>
 </head>
+
 <body>
-   <h1>WiFi</h1> 
-   <ul>
-    <li>Ref
+    <h1>WiFi</h1>
+    <ul>
+        <li>Ref
+            <ul>
+                <li><a href="https://www.wi-fi.org/discover-wi-fi">wi-fi.org</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/Wi-Fi">wiki/wifi</a>,
+                    <a href="https://en.wikipedia.org/wiki/List_of_WLAN_channels">WL channels</a></li>
+                <li><a href="https://www.google.com/search?sca_esv=6b5a9356d0b1c2af&sxsrf=ADLYWIKoGcQC6uyWsfE8kgedvU_egNtpfQ:1721836201601&q=wifi+frame+format+and+ofdm+symbols&tbm=vid&source=lnms&fbs=AEQNm0DH_Oa7AMVBTQNQQ_oTVW6BqUtTT-OvZQVpynIG7-Bc1ErEU-6gsOzEBCa_j-pPh-oRx44UYgyDO-4beZaVmK-RyQR4-7ZmpcAi7d-1IPJcTGlf3DUTUtCV6jJE6MGgmU10eM6GGhnBY8S-d-QE0ApXmiUHOdTUwwdXGvXkrETwGSvEzPxp4Q7BbK2vFw2d7WemTOhf_xA7I2hGrZrc0NOGov40rw&sa=X&ved=2ahUKEwiTqaHZg8CHAxWJJTQIHTOgDn0Q0pQJegQIERAB&biw=1744&bih=879&dpr=1#fpstate=ive&vld=cid:4bd81a8d,vid:SAxFRcCqUFc,st:0">802.11a
+                        frame organization</a></li>
+                <li><a href="https://www.youtube.com/watch?v=uJv_e8pYFY4">WiFi Fundamentals</a>
+                    <ul>
+                        <li>Concrete & metal both block wifi signal, but metal bounces it.</li>
+                        <li>2.4GHz radio travels almost twice as far as 5GHz radio. Halving Tx power for 2.4 GHz can get
+                            the two bands to approximately the same range. This can be used to avoid congestion in
+                            2.4GHz band.</li>
+                        <li>Noise floor: below -90dBm. CCA = Clear channel assessment: Device will backoff from
+                            transmitting if it detects 802.11 energy >4dB or any other energy >20 dB above noise floor.
+                        </li>
+                        <li>Non-overlapping channel 1, 6, 11: 2.412, 2.437, 2.462GHz with 25MHz spacing. Note: First BT
+                            channel is 2.402GHz. WiFi channel step size = 5MHz</li>
+                        <li>27 non-overlapping channel at 5 GHz band (see wiki link above): UNII-1, UNII-2, UNII-2e,
+                            UNII-3, UNII-4. Middle chunk is called DFS channels, where other app like Doppler/weather
+                            channels take priority.</li>
+                        <li>2.4 band = 3 lanes, 5G band = 25 lanes, 6G band = 59 lane highway</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <li>Memory
         <ul>
-            <li><a href="https://www.wi-fi.org/discover-wi-fi">wi-fi.org</a></li>
-            <li><a href="https://www.youtube.com/watch?v=uJv_e8pYFY4">WiFi Fundamentals</a></li>
-            <li><a href="https://www.google.com/search?sca_esv=6b5a9356d0b1c2af&sxsrf=ADLYWIKoGcQC6uyWsfE8kgedvU_egNtpfQ:1721836201601&q=wifi+frame+format+and+ofdm+symbols&tbm=vid&source=lnms&fbs=AEQNm0DH_Oa7AMVBTQNQQ_oTVW6BqUtTT-OvZQVpynIG7-Bc1ErEU-6gsOzEBCa_j-pPh-oRx44UYgyDO-4beZaVmK-RyQR4-7ZmpcAi7d-1IPJcTGlf3DUTUtCV6jJE6MGgmU10eM6GGhnBY8S-d-QE0ApXmiUHOdTUwwdXGvXkrETwGSvEzPxp4Q7BbK2vFw2d7WemTOhf_xA7I2hGrZrc0NOGov40rw&sa=X&ved=2ahUKEwiTqaHZg8CHAxWJJTQIHTOgDn0Q0pQJegQIERAB&biw=1744&bih=879&dpr=1#fpstate=ive&vld=cid:4bd81a8d,vid:SAxFRcCqUFc,st:0">802.11a frame organization</a></li>
+            <li>802.11b, a, g, n: 2.4, 5, 2.4, (2.4,5)GHz. 11n also starts MIMO to leverage multipath while 11ac goes to
+                next level of MU-MIMO.</li>
         </ul>
     </li>
-   </ul>
 </body>
+
 </html>
