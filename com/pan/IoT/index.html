@@ -10,12 +10,70 @@
    <ul>
     <li>Ref
         <ul>
-            <li><a href="https://openthread.io/guides">openthread.io/guides</a></li>
+            <li><a href="https://openthread.io/guides">openthread.io/guides</a>
+                <ul>
+                    <li>IPv6 addr
+                        <ul>
+                            <li>Unicast
+                                <ul>
+                                    <li>LLA = Link-Local Addr, fe80::/16, IID is based on 802.15.4 extended addr</li>
+                                    <li>Mesh-Local: fd00::/8
+                                        <ul>
+                                            <li>ML-EID, identifies an OT i/f independent of topology, should be used by apps, IID is random</li>
+                                            <li>RLOC = (Mesh-Local Prefix + IID), identifies an OT i/f that changes with topology, IID = 0000:00ff:fe00:RLOC16, RLOC16 = RouterID + ChildID</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>ALOC = Anycast LOCator, Mesh-Local, identifies an OT i/f via RLOC lookup when the RLOC of a destination is unknonwn, IID = 0000:00ff:fe00:fcXX, XX is used to identify leader, DHCPv6 agent, service, commissioner, etc
+                            </li>
+                            <li>Multicast: Deliver to all FTDs and MED if X = 1 and to all FTDs only if X = 2:
+                                <ul>
+                                    <li>Link-Local = ff02::X</li>
+                                    <li>Mesh-Local = ff03::X</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>Node roles and types
+                        <ul>
+                            <li>Router vs ED (End Device): ED communicates only to a parent router and does not forward messages.</li>
+                            <li>FTD (Router, REED, FED) vs MTD (MED, SED): MTD does NOT subscribe to ff02::2 or ff03::2. All nodes except SED keep radio on all the time.</li>
+                            <li>Thread network vs partition: Security credential defines thread network while radio connectivity defines partition.</li>
+                            <li>Leader, Border router</li>
+                            <li>Device limits: 32 routers, 511 EDs/Router. Thus 6 bits for router ID and 9 bits for child ID in RLOC16. OT tries to keep the num of routers in a partition in [16, 23] range.</li>
+                        </ul>
+                    </li>
+                    <li>Network discovery and formation
+                        <ul>
+                            <li>Three unique IDs for a thread network: PAN ID (2 bytes), XPAND ID (8 bytes), Name</li>
+                            <li>Active scanning of each channel using Beacon</li>
+                            <li>MLE = Mesh Link Establishment: After obtaining thread network credentials via commissioning process, MLE protocol is used to
+                                <ul>
+                                    <li>configure links: discover, assess the quality of, establish, and negotiate parameters of the links to neighboring nodes.</li>
+                                    <li>disseminate info about leader, network and router propagation (similar to RIP or Routing Info Protocol, a distance-vector routing protocol).</li>
+                                </ul>
+                            </li>
+                            <li>Join an existing network -- to establish child-parent links: Parent request, Parent response, Child ID req, Child ID response.</li>
+                        </ul>
+                    </li>
+                    <li>Router selection
+                        <ul>
+                            <li>Routers must form a CDS or Connected Dominating Set.</li>
+                            <li>Upgrade to a router: link request, link accept and request, link accept.</li>
+                            <li>Downgrade to a REED</li>
+                            <li>One-way receive links</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
             <li><a href="https://www.coursera.org/learn/iot-communications-networks">IoT-com-networks-coursera</a>
                 <ul>
                     <li>TSCH: Time Slotted Channel Hopping protocol in 802.11.4</li>
                     <li>Thread uses TSCH while open thread currently only supports CSMA/CA (non-TSCH mode)</li>
                     <li>DLL = LLC (multiplex + flow ctrl) + MAC (addr + chann access)</li>
+                    <li>6TiSCH = IPv6 over TSCH mode of 802.15.4e = (6top + MSF) = (IPv6 TiSCH operation layer + Min Sch Function</li>
+                    <li>6P or 6top-Protocol in 6top defines ADD, DELETE, LIST, COUNT operations</li>
                 </ul>
             </li>
         </ul>
