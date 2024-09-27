@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skills</title>
+    <link rel="stylesheet" href="folding_list.css">
 </head>
 
 <body>
@@ -194,6 +195,17 @@
         <li><a href="trips/index.html">Trips</a>
         </li>
     </ul>
+    <script>
+        // Add event listeners to each list item
+        document.querySelectorAll('li').forEach(item => {
+          item.addEventListener('click', function(event) {
+            // Toggle the 'open' class to show/hide nested lists
+            this.classList.toggle('open');
+            // Prevent event propagation so that nested lists don't also trigger
+            event.stopPropagation();
+          });
+        });
+      </script>
 </body>
 
 </html>

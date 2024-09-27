@@ -1,0 +1,36 @@
+/* Remove default bullets from all lists */
+ul {
+  list-style-type: none;
+  padding-left: 1.5em; /* Indentation for nested lists */
+}
+
+/* Style the <summary> to look like a clickable bullet */
+li {
+  cursor: pointer;
+  font-weight: bold;
+  position: relative;
+}
+
+/* Add a triangle next to each <li> */
+li::before {
+  content: '\25B6'; /* Right-pointing triangle (►) */
+  display: inline-block;
+  width: 1em;
+  margin-right: 0.5em;
+  transition: transform 0.2s ease; /* Smooth rotation on toggle */
+}
+
+/* Rotate the triangle when the list is expanded */
+li.open::before {
+  transform: rotate(90deg); /* Rotate 90 degrees to point down */
+}
+
+/* Hide nested lists initially */
+ul ul {
+  display: none;
+}
+
+/* Show nested lists when parent is clicked */
+li.open > ul {
+  display: block;
+}
