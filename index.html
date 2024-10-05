@@ -86,25 +86,7 @@
                                     DAC/ADC -> RF -> FEM -> antenna
                                 </li>
                                 <li>AGC, AFC, ATC</li>
-                                <li>Testing
-                                    <li>Adaptivity Tests: DUT shoud avoid transmitting in the presence of interference in ISM band, e.g. 2.4GHz
-                                        <ul>
-                                            <li>Ref
-                                                <ul>
-                                                    <li><a href="https://www.nxp.com/docs/en/application-note/AN12910.pdf">ED by NXP</a></li>
-                                                    <li>ETSI spec: <a href="https://www.etsi.org/deliver/etsi_en/300300_300399/300328/02.02.02_60/en_300328v020202p.pdf">2.4GHz, spec</a>,
-                                                                   <a href="https://www.etsi.org/deliver/etsi_en/301800_301899/301893/02.01.01_60/en_301893v020101p.pdf">5GHz spec</a></li>
-                                                </ul>
-                                            </li>
-                                            <li>ED:
-                                                <ul>
-                                                    <li>One way to test is to measure tput using iperf (e.g. thread): Let DUT transmits to REF while increasing the interference to DUT. As the interference exceeds the ED threadhold, the Rx tput measured by iperf on REF should drop or disappear.</li>
-                                                    <li>Another way to test is to measure spectrum (e.g. WLAN): Let DUT transmits to REF while increasing the interference to DUT. As the interference exceeds the ED threadhold, the DUT should vacate the portion of the spectrum occupied by the interference.</li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </li>
+                                <li><a href="com/tst/index.html">Testing</a></li>
                                 <li>Wireless com</li>
                                 <li>NFC</li>
                                 <li>PAN
@@ -114,11 +96,7 @@
                                         <li>Zigbee</li>
                                     </ul>
                                 </li>
-                                <li>LAN
-                                    <ul>
-                                        <li><a href="com/wlan/index.html">WLAN</a></li>
-                                    </ul>
-                                </li>
+                                <li><a href="com/wlan/index.html">WLAN</a></li>
                                 <li>WAN</li>
                             </ul>
                         </li>
