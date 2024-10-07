@@ -15,15 +15,28 @@
                 <li>Ref
                     <ul>
                         <li><a href="https://www.nxp.com/docs/en/application-note/AN12910.pdf">ED by NXP</a></li>
-                        <li>ETSI spec: <a href="https://www.etsi.org/deliver/etsi_en/300300_300399/300328/02.02.02_60/en_300328v020202p.pdf">2.4GHz, spec</a>,
+                        <li>ETSI spec: <a href="https://www.etsi.org/deliver/etsi_en/300300_300399/300328/02.02.02_60/en_300328v020202p.pdf">2.4GHz spec</a>,
                                        <a href="https://www.etsi.org/deliver/etsi_en/301800_301899/301893/02.01.01_60/en_301893v020101p.pdf">5GHz spec</a></li>
                     </ul>
+                </li>
+                <li>COT (Chan Occupation Time), Timing
                 </li>
                 <li>ED:
                     <ul>
                         <li>One way to test is to measure tput using iperf (e.g. thread): Let DUT transmits to REF while increasing the interference to DUT. As the interference exceeds the ED threadhold, the Rx tput measured by iperf on REF should drop or disappear.</li>
                         <li>Another way to test is to measure spectrum (e.g. WLAN): Let DUT transmits to REF while increasing the interference to DUT. As the interference exceeds the ED threadhold, the DUT should vacate the portion of the spectrum occupied by the interference.</li>
                     </ul>
+                </li>
+            </ul>
+        </li>
+        <li>Emission tests: OOB, Bandedge, Spectrum
+            <ul>
+                <li>Ref
+					<ul>
+						<li>ETSI has a series of spec called "Harmonised Standard for access to radio spectrum" that covers various bands (2.4GHz, 5GHz, 6GHz) and various devices (BS/AP, UE/ST, WLAN, LTE/NR).
+						<li> <a href="https://cept.org/Documents/se-45/76137/se45-23-020_etsi-oobe-vlp-test-report">Broadcom 6GHz OOB Emission report</a>
+						</li>
+					</ul>
                 </li>
             </ul>
         </li>
