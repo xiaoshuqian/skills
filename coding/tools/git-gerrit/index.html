@@ -49,7 +49,20 @@
             git show [commit-hash] --name-only</li>
         <li>git --help</li>
         <li>gitk</li>
-        <li>git checkout and git reset can take fname, commit-hash or branch as input argument:
+		<li>Merge:
+			<ul>
+				<li>A "merge branch_name/commit_hash" creates a new commit in the current branch as a result of a three-way merge: HEAD, commit_hash (or TOB of branch_name) and a common-ancestor commit. A conflict occurs here when two different changes occur to the same position of a file in the common-ancestor commit.
+				</li>
+				<li>A "cherry-pick commit_hash" creates a new commit in the current branch as a result of a two-way merge. A conflict occurs here when the same file in the two different commits differs in the same position.
+				</li>
+				<li>A "rebase branch_name/commit_hash" causes a series of cherry-picks up to a common-ancestor commit.
+				</li>
+				<li>The new commit created by cherry-pick or rebase has only one parent while the one created by merge has two parents.
+				</li>
+			</ul>
+		</li>
+        <li>When things get complicated, a good strategy is to save the files you changed to a new place, make a new clone, copy the change to the new clone, perform a new check-in process (add, commit and push), and finally abandon the old gerrit RB. Alternatively, you can reset the current branch to a few commits earlier after saving the files you changed to a new place, then copy the change in again and perform a new check-in process. The latter approach avoids making a new clone or abandoning the current gerrit RB.</li>
+        <li>git checkout and git reset can take fname, commit-hash or branch as input argument and can impact one, two or all three of HEAD (history), index and working dir:
 			<ul>
 				<li>git checkout -- fname and git reset -- fname: These two cmds copy a file. The former copies it from stage to working dir and the latter copies it from history to index.
 					<ul>
@@ -60,7 +73,7 @@
 				</li>
 				<li>git reset: copies all files from HEAD to index and if --hard is give to working dir also.
 				</li>
-				<li>git reset commit_name: moves the current branch to another place (hence reset). Specifically, it moves HEAD to the given commit and updates the index accordingly. If --hard is given, the working dir is updated also. If --soft is given, neither the working dir nor the index is updated.
+				<li>git reset commit_name: updates the contents of the current branch to match the commit_name (hence reset). Specifically, it moves HEAD to the given commit and updates the index accordingly. If --hard is given, the working dir is updated also. If --soft is given, neither the working dir nor the index is updated.
 				</li>
 				<li>git checkout commit_name: has no effect on branch. It just moves the HEAD to the specific commit, resulting in a HEAD associated with no branch (hence a detached HEAD), andupdates the all files in both the index and the working directory using that commit.
 				</li>
