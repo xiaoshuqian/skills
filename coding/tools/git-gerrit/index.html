@@ -43,12 +43,58 @@
                 <li>git -A and git -u can be used without a file or dir argument (default to the whole working dir of the curr git project).</li>
             </ul>
         </li>
-        <li>git commit --amend --no-edit</li>
+        <li>git commit --amend --no-edit; git push --force-with-lease</li>
         <li>git show</li>
         <li>After making the commit, you can see which files were included in the commit by running:<br>
             git show [commit-hash] --name-only</li>
         <li>git --help</li>
         <li>gitk</li>
+        <li>git checkout and git reset can take fname, commit-hash or branch as input argument:
+			<ul>
+				<li>git checkout -- fname and git reset -- fname: These two cmds copy a file. The former copies it from stage to working dir and the latter copies it from history to index.
+					<ul>
+						<li>"git checkout commit_name --fname" copies the file from a specific commit to both the index and the working dir.</li>
+						<li>"git reset commit_name --fname" copies the file from a specific commit to the index only.</li>
+						<li>"git reset --hard --fname" copies the file to both index and working dir. In this case, it's the same as "git checkout HEAD --fname" (note the latter is not the same as "git checkout -- fname").</li>
+					</ul>
+				</li>
+				<li>git reset: copies all files from HEAD to index and if --hard is give to working dir also.
+				</li>
+				<li>git reset commit_name: moves the current branch to another place (hence reset). Specifically, it moves HEAD to the given commit and updates the index accordingly. If --hard is given, the working dir is updated also. If --soft is given, neither the working dir nor the index is updated.
+				</li>
+				<li>git checkout commit_name: has no effect on branch. It just moves the HEAD to the specific commit, resulting in a HEAD associated with no branch (hence a detached HEAD), andupdates the all files in both the index and the working directory using that commit.
+				</li>
+				<li>"git reset branch_name" is dangerous while "git checkout branch_name" is safe. After "git reset branch_name", you will remain in the current branch but your index and/or your working dir are updated and potentially the changes in them get lost.
+				<table>
+					<thead>
+						<tr>
+							<td>Command</td>
+							<td>Effect summary</td>
+							<td>Working dir</td>
+							<td>Index</td>
+							<td>Branch movement</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>git checkout branch_name</td>
+							<td>Switch to the branch_name</td>
+							<td>Match the branch_name</td>
+							<td>Contents of the branch_name is copied over. Files in the old branch but not in the new one are deleted. Files in neither are ignored.</td>
+							<td>HEAD is moved to the branch_name</td>
+						</tr>
+						<tr>
+							<td>git reset --hard branch_name</td>
+							<td>Resets HEAD (history), index and working dir to match branch_name</td>
+							<td>All uncommited changes are lost</td>
+							<td>Reset to branch_name</td>
+							<td>No branch switch</td>
+						</tr>
+					</tbody>
+				</table>
+				</li>
+			</ul>
+		</li>
     </ul>
 </body>
 </html>
