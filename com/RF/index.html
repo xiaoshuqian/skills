@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RF</title>
+</head>
+
+<body>
+    <h1>RF</h1>
+    <ul>
+        <li>Ref:
+            <ul>
+                <li><a href="https://www.nxp.com/docs/en/application-note/AN12910.pdf">ED by NXP</a></li>
+					<ul>
+						<li>center freq, span, RBW/VBW, detection mode (peak, average, RMS), sweep mode (continuous/single)
+						</li>
+						<li>sweep time: typically automatically determined by the settings above
+						</li>
+						<li>trace mode: clear/write, max/min hold (can be cleared by reset or trace clear cmd), average (needs to choose between RMS average and log or dB average, needs to set average count: 10 - 50 for moderately stable signal with some noise. Larger count yields more smooth curve but takes longer measurement time).
+						</li>
+					</ul>
+                </li>
+            </ul>
+        </li>
+        <li>Overview
+            <ul>
+                <li>Rx requirements
+                    <ul>
+                        <li>Sensivity = req_SNR + NF + 10*log10(kTB) (-174 dBm/Hz + 10*log10(B))
+						</li>
+                        <li>Dyn Range = MaxInputSig - MDS (Min Detectable Signal above noise) = P1dB (1dB compression pt) - MDS
+						</li>
+                        <li>RxEVM = a metric used at high input. SNR_dB = -20*log10(RxEVM*100)
+						</li>
+                        <li>Inpairment: IQ imbalance/DC offset, thermal, inband LO phase noise, passband ripple, non-linearity ()
+						</li>
+                        <li>Interference: blocker, adj channel, intermodulation (two-tone IIP3/IIP2)
+						</li>
+					</ul>
+                </li>
+                <li>Tx requirements
+                    <ul>
+                        <li>Power: Tx Power range/ctrl, gain control accuracy, Time mask (pre-burst level, overshoot/undershoot)
+						</li>
+                        <li>Inband Signal Quality: EVM
+						</li>
+                        <li>Outband Signal Quality: ACLR, Spectral Mask
+						</li>
+					</ul>
+                </li>
+                <li>Metric cascade
+                    <ul>
+                        <li>NF (Friis) = 10*log10(Ftotal), where Ftotal = F1 + (F2-1)/G1 + (F3-1)/(G1*G2) + ...
+						</li>
+                        <li>1/IIP3_total = 1/IIP3_1 + G1/IIP3_2 + G1*G2/IIP3_3 + ...
+						</li>
+						<li>EVM_total<sup>2</sup> = EVM1<sup>2</sup> + EVM2<sup>2</sup> + ...
+							<ul>
+								<li>Phase noise (smearing in the consterlation diagram)
+								</li>
+								<li>Filter response (not as critical for OFDM)
+								</li>
+								<li>DC offset (not as critical for OFDM)
+								</li>
+								<li>IQ imbalance, Single Sideband Rejection (SSB) aka Image Rejection (3dB worse effect for OFDM)
+								</li>
+								<li>PA non-linearity: AM-AM, AM-PM
+								</li>
+							</ul>
+						</li>
+					</ul>
+                </li>
+                <li>Rx arch: Zero-IF or direct conversion, Low-IF, Polar modulator
+                </li>
+                <li>PLL
+                </li>
+            </ul>
+        </li>
+    </ul>
+</body>
+</html>
