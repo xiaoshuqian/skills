@@ -10,6 +10,20 @@
 <body>
     <h1>Testing</h1>
     <ul>
+        <li>Instruments:
+            <ul>
+                <li>Spectrum analyzer:
+					<ul>
+						<li>center freq, span, RBW/VBW, detection mode (peak, average, RMS), sweep mode (continuous/single)
+						</li>
+						<li>sweep time: typically automatically determined by the settings above
+						</li>
+						<li>trace mode: clear/write, max/min hold (can be cleared by reset or trace clear cmd), average (needs to choose between RMS average and log or dB average, needs to set average count: 10 - 50 for moderately stable signal with some noise. Larger count yields more smooth curve but takes longer measurement time).
+						</li>
+					</ul>
+                </li>
+            </ul>
+        </li>
         <li>Adaptivity Tests: DUT shoud avoid transmitting in the presence of interference in ISM band, e.g. 2.4GHz
             <ul>
                 <li>Ref
