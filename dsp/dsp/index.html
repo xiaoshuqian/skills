@@ -67,7 +67,7 @@ table, th, td {
         </li>
         <li>Cost measure: Sample size and sampling rate
         </li>
-        <li>Sample size impacts 'contrast': black white vs gray scale
+        <li>Sample size impacts signal quality such as 'contrast': black white vs gray scale
         </li>
         <li>Sampling rate limits freq content: CD quality vs telephone
           <ul>
@@ -75,7 +75,25 @@ table, th, td {
             </li>
           </ul>
         </li>
-        <li>Over-sampling: Freq SQNR and oversampling ratio -> number of bits: SNRdB = 1.76 + 6.02n + 10*log(r/PAR), where r = oversampling ratio
+        <li>SQNR vs number of bits n, oversampling ratio r and Peak to Average Power Ratio (PAPR)
+          <ul>
+            <li>SNRdB = 1.76 + 6.02n, for sinusoidal
+            </li>
+            <li>SNRdB = 4.8 + 6.02n + 10*log(r/PAPR) for oversampled broadband signal
+            </li>
+          </ul>
+        </li>
+        <li>When using 2D sample/sec for the unit of sampling rate Fs and B for one-sided BW and assuming signal is real bandlimited passband signal (In other words, everything here is passband and real valued. Note a normal real baseband signal is a special case of real bandlimited signal with passband [0, B]), we have
+          <ul>
+			<li>Fs &ge; B: Nyquist condition
+            </li>
+			<li>Fs &ge; Fmax/k: baseband condition
+            </li>
+			<li> R/B &gt; lg(1 + SNR), where C/B = spectral efficiency = bits/2D sample or bits/sec/Hz and SNR = Ps/Pn or Es/N0 where Es is the energy per 2D symbol and N0 is noise variance per 2D symbol or one-sided PSD of the AWGN.
+            </li>
+			<li>Avergy signal energy per 2D symbol is P/B.
+            </li>
+          </ul>
         </li>
       </ul>
     </li>

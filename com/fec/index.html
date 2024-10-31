@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Error Correction Code</title>
+</head>
+
+<body>
+  <h1>Error Correction Code</h1>
+  <ul>
+    <li>References
+      <ul>
+        <li>My notes
+          <ul>
+            <li>new_course_outline.docx</li>
+            <li>NR-LTE FEC webpage</li>
+            <li>CRC
+              <ul>
+                <li>best-crc-probability-undetected-err.pptx</li>
+                <li>relatives_of_hamming_code.pptx</li>
+                <li>Combined_Error_Detection_and_Error-Correction.docx</li>
+                <li>weight-enumerator.docx</li>
+                <li>hamming-and-m-seq-code.docx (related: Biorthogonal codes, simplex code, Hadamard matrix in exercise
+                  2 in David Forney's book)</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>David Forney
+          <ul>
+            <li><a href="https://web.stanford.edu/class/ee392d/">Stanford course</a>
+            </li>
+          </ul>
+        </li>
+        <li>Digital Communication 3rd Edition by John R. Barry, Edward A. Lee, David G. Messerschmitt
+        </li>
+      </ul>
+    </li>
+    <li>Min-distance hard decoding with exchaustive search
+      <ul>
+        <li>d &ge; 2t + s + e + 1
+        </li>
+        <li>Correct t errors and detect s errors (with e = 0): Do error correction assuming there's only t or fewer errors. If successful, declare so. Otherwise, declare error detected. e.g. correct 1 error and detect 1 error using repetition code with d = n = 4. If r = (0111) or (1111), declare success. If r = (0011), declare error detection. Note if r = (0111) and c = (0000), we have decoding error as we cannot correct 1 error and still detect 2 errors. In this case, t + s = 3, e = 0, the inequality above fails.
+        </li>
+        <li>Correct t errors and e erasures (with s = 0): First put aside e erasure positions, then the remaining positions of all the codewords should be at least d - e (&le; 2t + 1) apart. Thus, we can identify a unique codeword with these positions. We then add the erausure positions to it by trying all combination of erasure values. There should be only one combination that yields correct codeword since all other codewords will be more than e position away. e.g. correct 1 error and 1 erasure using repetition code with d = n = 4. If r = (x011) or (x111), we will get (x111) first. We will then obtain final decoded codeword (1111) by trying (0111) and (1111).
+        </li>
+      </ul>
+    </li>
+    <li>Modifying linear codes (See Wicker's or Blahut's FEC book):
+      <ul>
+        <li>Shortening or lengthening: Fixing (n-k), decreasing or increasing k. e.g: shortened CRC code
+        </li>
+        <li>Puncturing or extending: Fixing k, decreasing or increasing n - k. e.g: punctured convolutional code,
+          extended RS code
+        </li>
+        <li>Expurgating or augmenting: Fixing n, decreasing or increasing k. e.g. RS code has many BCH codes as subcodes
+          (e.g. cf book <a href=https://link.springer.com/chapter/10.1007/978-3-540-77224-8_26>Subcodes of Reed-Solomon
+            Codes Suitable for Soft Decoding</a>. A subcode is formed after deleting or expurgating some codewords from
+          the original code. Oftentimes, a subcode forms a subspace of the spaced spanned by the original code.
+          Virtually all CRC code has even parity code as a supercode.
+        </li>
+        <li>Lengthening and extending are called expanding while shortening and puncturing are called restricting
+          (Blahut): these modifications change code length n
+        </li>
+      </ul>
+    </li>
+    <li>Cyclic codes
+    </li>
+    <li>Reed-Solomon
+    </li>
+    <li>Convolutional code
+      <ul>
+        <li>Encoder
+          <ul>
+            <li>TBCC: e.g. (131, 171, 165), where all three poly have weigth 5
+            </li>
+            <li>RSC (Recursive Symmetric Convolutional): e.g. (15/13), where both numerator and denominator poly have
+              weigth 3.
+            </li>
+          </ul>
+        <li>Decoders
+          <ul>
+            <li>Viterbi
+            </li>
+            <li>BCJR
+            </li>
+            <li>List decoding
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>Turbo
+      <ul>
+        <li>Parallel concatenated Turbo code
+        </li>
+        <li>Turbo block code
+        </li>
+        <li>Serial concatenated Turbo code
+        </li>
+        <li>RA (Repeat-Accumulator)
+        </li>
+        <ul>
+          <li>Regular
+          </li>
+          <li>Irregular
+          </li>
+        </ul>
+    </li>
+  </ul>
+</body>
+</html>
