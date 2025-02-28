@@ -11,15 +11,21 @@
     <ul>
         <li>General
 			<ul>
+				<li>Math const: 1/7=0.1472857, &Gamma;=0.577, half-life=ln2, ln3, ln10, pwr2dB: log10(n), log10(e)
+				</li>
 				<li><a href="https://www.coursera.org/specializations/mathematics-engineers">Mathematics for engineers specialization</a> by Jeffrey Chasnov, Hongkong Univ of Science and Tech
 					<ul>
 						<li>Courses: <a href="https://www.coursera.org/learn/numerical-methods-engineers">Numerical-methods</a>, Matrix algebra, Diff eq, Vector calculus, Capstone
 						</li>
-						<li><a href="https://www.math.hkust.edu.hk/~machas/?menu=3">Lecture notes</a>
+						<li><a href="https://www.math.hkust.edu.hk/~machas/?menu=1">Lecture notes and courses</a>
 						</li>
 						<li><a href="https://www.math.hkust.edu.hk/~machas/?menu=2">Other gems</a>
 							<ul>
 								<li>One equation to link together exp(x), sin/cos(x), ln(x), pi, etc: how-to-get-exp-sin-from-one-eq.docx
+								</li>
+								<li>Levi-Civita symbol and Kronecker delta symbol. The most important application of Levi-Civita symbol is to define vector cross-product. When Einstein was asked about what he likes best about Italy, he replied "Levi-Civita symbols".
+								</li>
+								<li>Newton Fractal: Self-similarity is a basic property of Newton Fractal. The set of all escape points is called Julia set. Why does the Newton Fractal look the way it does? Rotational symmetry. Radial structure. Higher (4th, 5th, ...) roots.
 								</li>
 							</ul>
 
@@ -30,7 +36,10 @@
         </li>
         <li>Algebra
 			<ul>
-				<li>
+				<li>finite_dim_space_halmos.docx</li>
+				<li>abstract_algebra_review1.pptx</li>
+				<li>finite-field-summary.pptx, cyclotomic_coset_poly.docx, t4_Polya.pptx, relatives_of_hamming_code.pptx, best-crc-probability-undetected-err.pptx</li>
+				<li><a href="https://en.wikipedia.org/wiki/Quaternion">Quaternion</a>
 				</li>
 			</ul>
         </li>
@@ -58,10 +67,84 @@
 		        </li>
 			</ul>
         </li>
-        <li>Computational math:
+        <li>Computational math: root-finding, interp, linear algebra, conditioning/stability, diff/integration, optimization, ode, pde.
 			<ul>
 				<li><a href="https://people.maths.ox.ac.uk/trefethen/index.html">Nick
                                 Trefethen</a>: chebfun toolbox, numerical linear algebra, spectral methods in matlab,
+			        <ul>
+						<li>Q<sup>*</sup>x, X<sup>-1</sup>x can be used to represent coordinate change.
+						</li>
+				        <li>Matrix factorization (p71, p148)
+							<ul>
+								<li>LU: Trianular triangularization</li>
+								<li>GS: A = QR, Triangular orthogonalization</li>
+								<li>HH: A = QR, Orthogonal triangularization</li>
+							</ul>
+				        </li>
+				        <li>Three strokes of luck in obtaining A = LU after we zero one column of A at a time using Ln*...*L1*A = U.
+							<ul>
+								<li>One to find the inverse of Li: only sign changes are needed
+								<li>One to find the product of the above inverses: no calculations are needed.</li>
+								<li>Partial pivoting result can be expressed as PA = LU. Also note: 1) Statistically, poor performance of partial pivoting is rare even though artificial examples can be constructed to yield very poor performance. 2) No pivoting is needed for Cholesky decomposition of Hermitian matrix.</li>
+							</ul>
+				        </li>
+						<li>Eigenvalue problem (lecture 24): Way to remember spectrum decomposition A = X&Sigma;X<sup>-1</sup> is to write AX = X&Sigma;.
+							<ul>
+								<li>A is diagonalizable with a similarity transformation iff A is non-defective. 
+				                </li>
+				                <li>A is diagonalizable with a unitary transformation iff A is normal (A and A* commute).
+				                </li>
+				                <li>A is always triangularizable with a unitary transformation regardless of its singularity or defectiveness.
+				                </li>
+							</ul>
+				        </li>
+						<li>Eigenvalue algorithms (lecture 25):
+							<ul>
+								<li>Power method requires
+							        <ul>
+				                        <li>A initial vector not perpendicular to the eigen-vector of dominant eigen-value. Using random vector, all-one vector (for positive definite and symmetric matrix), all-one plus random purturbation, a column from A, etc
+				                        </li>
+				                        <li>The ratio btw the 1st and the 2nd dominant eigen-values is large.
+				                        </li>
+							        </ul>
+				                </li>
+								<li>Inverse power method
+							        <ul>
+				                        <li>can be used to find the eigenvalue with the smallest absolute value.
+				                        </li>
+				                        <li>can be made converge more quickly by shifting (to make the eigen-value even smaller before iteration and shift back after iteration.
+				                        </li>
+							        </ul>
+				                </li>
+								<li>Power method is usu too slow.
+				                <li>
+				                <li>Root-finding is not a good way because
+							        <ul>
+				                        <li>finding the characteristic poly polynomial from the matrix is an ill-conditioned problem. For example, the constant term = det(A).
+				                        </li>
+				                        <li>root finding of a polynomial is usu an ill-conditioned problem unless the roots are well-seperated or polynomial is specially structured (like a chebyshev poly for example).
+				                        </li>
+							        </ul>
+				                </li>
+				                <li>If the root-finding problem of a polynomial is well-conditioned, the eigen-value problem of its companion matrix is also well-conditioned. However, the converse is not true for the reasons stated above.
+				                </li>
+				                <li>Eigenvalue problems are often solved by eigenvalue revealing diagonalization. Schur factorization is most often used.
+				                </li>
+				                <li>Schur factorization is often done in two steps:
+							        <ul>
+										<li>Reduce a (Hermitian) matrix to Hessenberg (tri-diagonal) form. This step has O(m<sup>3</sup>) complexity.
+				                        </li>
+										<li>Reduce a Hessenberg (tri-diagonal) form to diagonal form. This step has O(m<sup>3</sup>) complexity (only O(m<sup>2</sup>) for tri-diagonal form).
+				                        </li>
+							        </ul>
+				                </li>
+				                <li>For Hermitian matrix, not only the 2nd 'infinite' step of the Schur factorization above is faster but an order of magnitude faster.
+				                </li>
+				                <li>QR method.
+				                </li>
+							</ul>
+				        </li>
+			        </ul>
 				</li>
 			</ul>
         </li>
