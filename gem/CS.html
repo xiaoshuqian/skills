@@ -11,11 +11,34 @@
     <ul>
         <li>Coding
             <ul>
+				<li>re
+					<ul>
+						<li>Links
+							<ul>
+								<li><a href="https://digitalfortress.tech/tips/top-15-commonly-used-regex">most-used-regex</a>
+								</li>
+							</ul>
+						<li>Compatible across python, vim and grep:
+							<ul>
+								<li>Character classes: . \w \d \s \W \D \S [abc] [^abc] [a-g]
+								</li>
+								<li>Quantifiers:	a* a+ a? a{n} a{n,} a{n,m}
+								</li>
+								<li>Anchors:	^ $ \b (grep -P supports \b while vim uses \< and \> instead)
+								</li>
+								<li>Escapes:	\. \* \\ \t \n \r (beware double escaping in shell/scripts)
+								</li>
+								<li>Grouping	(abc) \1
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
 				<li>IDE and editor
 					<ul>
 						<li>gvim, -p, -O, vimdiff,
 							<ul>
-								<li>: cmd: diffthis, tabnew, tabn, tabp, sp, vsp, .,$s/a/b/g
+								<li>: cmd: diffthis, tabnew, tabn, tabp, sp, vsp, .,$s/a/b/g, :g/foo/s/foo/bar/g, /\v[^X]B, $s/\(*\),/\1; / (range of substitution here is: (first line starting with any char except X followed by letter B, last line of the file))
 								<li>cmd mode: f, F, 10W, yy, dd, p, m a, y'a, j, h, k, l, $, ^, "+p
 							</ul>
 						</li>
@@ -30,6 +53,8 @@
 								<li>sed: sed -n '/COMMENTS:/{s/^.*COMMENTS://;p;}'
 								</li>
 								<li>od -c fname => see if the fname has a trailing '\n'
+								</li>
+								<li>diff --strip-trailing-cr
 								</li>
 								<li>awk
 								</li>
@@ -53,6 +78,11 @@
 								    <a href="https://docs.python.org/3/library/">python.org</a>
 								</li>
 							</ul>
+						</li>
+						<li>Yaml: <a href="https://support.atlassian.com/bitbucket-cloud/docs/yaml-anchors/">Yaml Anchor</a>,
+						<a href="https://quickref.me/yaml.html">quickref.me/yaml</a>
+						</li>
+						<li><a href="https://plato.stanford.edu/entries/lambda-calculus/">Lambda calculus</a>
 						</li>
 					</ul>
 				</li>

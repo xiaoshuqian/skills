@@ -25,7 +25,9 @@
                 <li>Loop
                     <ul>
                         <li>while</li>
-                        <li>for</li>
+						<li>shopt -s nullglob # set glob</li>
+						<li>for f in ref/*.csv ref/*.yaml; do   # use glob</li>
+						<li>shopt -u nullglobfor  # unset glob</li>
                     </ul>
                 </li>
             </ul>
