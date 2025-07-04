@@ -9,20 +9,64 @@
 <body>
     <h1>EE Gem</h1>
     <ul>
-        <li>Coursera: <a href="https://www.coursera.org/learn/modeling-feedback-systems">Modeling feedback sys</a>, aka Control Systems Analysis: Modeling of Dynamic Systems: by Univ of Colorado Boulder. Good exercises.
-		</li>
         <li>Wireless charging:
 			<ul>
 				<li><a href="https://ocw.mit.edu/courses/6-334-power-electronics-spring-2007/">OCW.MIT pwr electronics</a>
 				</li>
-        		<li>Coursera: <a href="https://www.coursera.org/specializations/power-electronics#courses">Power Electronics</a>
-				</li>
 				<li>Power Electronics: Converters, Applications, and Design by Ned Mohan, Tore M. Undeland, and William P. Robbins
 				</li>
 				<li>Fundamentals of Power Electronics by Robert W. Erickson and Dragan Maksimović
+					(<a href="https://imserv.org/MFKForum/Datasheets/Fundamentals%20of%20power%20electronics/ecee.colorado.edu/copec/book/slides/slidedir.html">book slides</a>,
+        		     <a href="https://www.coursera.org/specializations/power-electronics#courses">Coursera: Power Electronics</a>)
 				</li>
 			</ul>
 		</li>
+        <li>Analog PLL:
+			<ul>
+				<li><a href="https://davepagurek.github.io/SE-Notes/se380">Freq domain control design</a>
+				</li>
+			</ul>
+		</li>
+        <li>Discrete-time PLL:
+			<ul>
+				<li><a href="https://www.ti.com/lit/an/slyt169/slyt169.pdf">TI</a>,
+				    Real DSP (<a href="https://www.dsprelated.com/showarticle/973.php">Part II</a>,
+				              <a href="https://www.dsprelated.com/showarticle/860.php">Part I</a>),
+				    <a href="https://web.engr.oregonstate.edu/~moon/research/files/cas2_mar_07_dpll.pdf">IEEE</a>
+				</li>
+				<li>Design check list:
+					<ul>
+						<li> Specify target loop BW/tracking speed, lock time, stability margin
+						</li>
+						<li> Choose damping ratio 𝜁 ≈ 0.7 (for ~50° phase margin).
+						</li>
+						<li> Compute 𝜔<sub>𝑛</sub> based on system needs.
+						</li>
+						<li> Use formulas from Robertson or TI to determine 𝐾𝐿 and 𝐾𝐼
+						</li>
+						<li> Simulate or analyze closed-loop response 𝐻(𝑧): natural freq, settling time, overshoot.
+						</li>
+						<li> Validate stability via pole placement (inside unit circle).
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+        <li>Ctrl:
+			<ul>
+				<li>Coursera: <a href="https://www.coursera.org/learn/modeling-feedback-systems">Modeling feedback sys</a>, aka Control Systems Analysis: Modeling of Dynamic Systems: by Univ of Colorado Boulder. Good exercises.
+				</li>
+			</ul>
+		</li>
+        <li>DSP:
+			<ul>
+				<li><a href="https://dsp.stackexchange.com/questions/76826/why-does-the-direct-form-i-become-our-first-choice-for-fixed-point-implementatio">Pros for Direct Form I</a>: Reduced bit width of the reg for the feedback section by letting it equal to the output bit width. For example, a <a href="https://dsp.stackexchange.com/questions/31028/transfer-function-of-second-order-notch-filter">notch filter</a> typically needs internal bit width ~ B<sub>input</sub> + lg2(1/(1-r)) + 3 guard bits (see Mitra DSP chap 9) if direct form II is used, which can be ~ 6 bits wider depending on Q (Quality) factor value r and how many guard bits adopted.
+				</li>
+				<li><a href="https://www.dsprelated.com/freebooks/filters/Four_Direct_Forms.html">Pros/Cons of four direct form</a>: Direct form I zeros (feedforward) sec before poles section, overflow/underflow cancellation in the sum yielding reduced bit-width of the 'pole' section (see last bullet). Direct form II = DF1 with 'zero' and 'pole' sec order swapped, sharing the register used for 'zero' and 'pole' sections but may cause internal bit width growth as the pole section in front tend to amplify signal. Recap: DF1/DF2 order switched. Transpose => signal direction reversed w/o changing number of registers. e.g. Both DF1 and transposed DF2 have the 'zero' section in front.
+				</li>
+				<li><a href="https://dsp.stackexchange.com/questions/21792/best-implementation-of-a-real-time-fixed-point-iir-filter-with-constant-coeffic/21811#21811">noise-shaping</a>: 
+				</li>
+			</ul>
     </ul>
 </body>
 
