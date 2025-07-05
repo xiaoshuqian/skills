@@ -25,6 +25,8 @@
 			<ul>
 				<li><a href="https://davepagurek.github.io/SE-Notes/se380">Freq domain control design</a>
 				</li>
+				<li> cmp classical PLLs using 3 loop filters: RC, lead/lag (type 1) and PI (type 2) -- see chatGPT or gemini
+				</li>
 			</ul>
 		</li>
         <li>Discrete-time PLL:
@@ -33,6 +35,22 @@
 				    Real DSP (<a href="https://www.dsprelated.com/showarticle/973.php">Part II</a>,
 				              <a href="https://www.dsprelated.com/showarticle/860.php">Part I</a>),
 				    <a href="https://web.engr.oregonstate.edu/~moon/research/files/cas2_mar_07_dpll.pdf">IEEE</a>
+				</li>
+				<li>An analog PLL can be converted to a digital one using mappings (see chatGPT for a comparison):
+					<ul>
+						<li> Substitution based:
+							<ul>
+								<li> Forward or backward Euler: Both can be viewed as an approximation of impulse invariant transformation when sampling interval T is small compared with 1/loop_BW: z = exp(sT) ~ 1 + sT (Forward Euler) ~ 1 / (1 - sT) (Backward Euler). From these mappings, we can relate the DPLL parameters KI and KP directly to the natural freq and damping factor of the analog PLL: KI = T<sup>2</sup>w<sub>n</sub><sup>2</sup>, KL = 2&zeta;w<sub>n</sub>T (see Real DSP Part II link above).
+								</li>
+								<li> Impulse invariant transformation z = exp(sT): see Jackson's DSP book.
+								</li>
+								<li> Bilinear transformation: see Jackson's DSP book.
+								</li>
+							</ul>
+						</li>
+						<li> ZOH tansform based: H(z) = (1 - z<sup>-1</sup>)Z{&#x2112;<sup>-1</sup>(H(s)/s)} (see <a href="https://kostasmargellos.github.io/assets/downloads/notes/notes_A2_DiscreteSystems.pdf">discrete_time_control_sys.pdf</a>)
+						</li>
+					</ul>
 				</li>
 				<li>Design check list:
 					<ul>
@@ -55,6 +73,10 @@
         <li>Ctrl:
 			<ul>
 				<li>Coursera: <a href="https://www.coursera.org/learn/modeling-feedback-systems">Modeling feedback sys</a>, aka Control Systems Analysis: Modeling of Dynamic Systems: by Univ of Colorado Boulder. Good exercises.
+				</li>
+				<li><a href="https://davepagurek.github.io/SE-Notes/se380/09%20frequency%20domain%20control%20design.html">Control design in s-domain</a>: a good course link also.
+				</li>
+				<li><a href="https://kostasmargellos.github.io/assets/downloads/notes/notes_A2_DiscreteSystems.pdf">discrete_time_control_sys.pdf</a>
 				</li>
 			</ul>
 		</li>
